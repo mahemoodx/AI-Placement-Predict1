@@ -1,0 +1,327 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.85rem;
+  --background: oklch(0.976 0.008 250);
+  --foreground: oklch(0.21 0.05 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.05 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.05 260);
+  --primary: oklch(0.52 0.19 258);
+  --primary-foreground: oklch(0.99 0.005 250);
+  --secondary: oklch(0.94 0.02 250);
+  --secondary-foreground: oklch(0.32 0.06 260);
+  --muted: oklch(0.955 0.012 250);
+  --muted-foreground: oklch(0.53 0.035 258);
+  --accent: oklch(0.68 0.15 200);
+  --accent-foreground: oklch(0.16 0.04 260);
+  --destructive: oklch(0.58 0.22 22);
+  --destructive-foreground: oklch(0.99 0.005 250);
+  --success: oklch(0.62 0.16 155);
+  --success-foreground: oklch(0.99 0.005 250);
+  --warning: oklch(0.76 0.16 75);
+  --warning-foreground: oklch(0.2 0.05 60);
+  --border: oklch(0.9 0.015 250);
+  --input: oklch(0.9 0.015 250);
+  --ring: oklch(0.52 0.19 258);
+  --chart-1: oklch(0.52 0.19 258);
+  --chart-2: oklch(0.68 0.15 200);
+  --chart-3: oklch(0.62 0.16 155);
+  --chart-4: oklch(0.76 0.16 75);
+  --chart-5: oklch(0.6 0.2 320);
+  --gradient-hero: linear-gradient(135deg, oklch(0.34 0.13 262), oklch(0.52 0.19 258) 55%, oklch(0.68 0.15 200));
+  --gradient-card: linear-gradient(150deg, color-mix(in oklab, var(--primary) 8%, transparent), transparent 65%);
+  --shadow-panel: 0 18px 40px -28px color-mix(in oklab, var(--primary) 55%, transparent);
+  --shadow-panel-hover: 0 28px 70px -28px color-mix(in oklab, var(--primary) 45%, transparent);
+  --sidebar: oklch(0.99 0.004 250);
+  --sidebar-foreground: oklch(0.21 0.05 260);
+  --sidebar-primary: oklch(0.52 0.19 258);
+  --sidebar-primary-foreground: oklch(0.99 0.005 250);
+  --sidebar-accent: oklch(0.955 0.012 250);
+  --sidebar-accent-foreground: oklch(0.32 0.06 260);
+  --sidebar-border: oklch(0.9 0.015 250);
+  --sidebar-ring: oklch(0.52 0.19 258);
+}
+
+.dark {
+  --background: oklch(0.19 0.035 262);
+  --foreground: oklch(0.96 0.008 250);
+  --card: oklch(0.235 0.04 262);
+  --card-foreground: oklch(0.96 0.008 250);
+  --popover: oklch(0.235 0.04 262);
+  --popover-foreground: oklch(0.96 0.008 250);
+  --primary: oklch(0.68 0.16 255);
+  --primary-foreground: oklch(0.16 0.04 262);
+  --secondary: oklch(0.29 0.045 262);
+  --secondary-foreground: oklch(0.96 0.008 250);
+  --muted: oklch(0.29 0.045 262);
+  --muted-foreground: oklch(0.72 0.03 255);
+  --accent: oklch(0.72 0.14 200);
+  --accent-foreground: oklch(0.16 0.04 262);
+  --destructive: oklch(0.66 0.19 22);
+  --destructive-foreground: oklch(0.99 0.005 250);
+  --success: oklch(0.7 0.15 155);
+  --success-foreground: oklch(0.16 0.04 262);
+  --warning: oklch(0.8 0.15 75);
+  --warning-foreground: oklch(0.2 0.05 60);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.68 0.16 255);
+  --chart-1: oklch(0.68 0.16 255);
+  --chart-2: oklch(0.72 0.14 200);
+  --chart-3: oklch(0.7 0.15 155);
+  --chart-4: oklch(0.8 0.15 75);
+  --chart-5: oklch(0.68 0.18 320);
+  --gradient-hero: linear-gradient(135deg, oklch(0.26 0.08 262), oklch(0.38 0.15 258) 55%, oklch(0.45 0.13 200));
+  --sidebar: oklch(0.235 0.04 262);
+  --sidebar-foreground: oklch(0.96 0.008 250);
+  --sidebar-primary: oklch(0.68 0.16 255);
+  --sidebar-primary-foreground: oklch(0.16 0.04 262);
+  --sidebar-accent: oklch(0.29 0.045 262);
+  --sidebar-accent-foreground: oklch(0.96 0.008 250);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.68 0.16 255);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    background-image:
+      radial-gradient(900px 520px at 8% -10%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 70%),
+      radial-gradient(760px 460px at 100% 0%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 70%);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  /* Softer, themed focus rings everywhere */
+  :focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--primary) 70%, transparent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Tactile interactive defaults — no layout change */
+  button,
+  a,
+  [role="button"],
+  summary {
+    transition:
+      color 200ms ease,
+      background-color 200ms ease,
+      border-color 200ms ease,
+      box-shadow 250ms ease,
+      transform 200ms ease,
+      opacity 200ms ease;
+  }
+
+  button:not(:disabled):active,
+  [role="button"]:active {
+    transform: scale(0.985);
+  }
+
+  input,
+  select,
+  textarea {
+    transition:
+      border-color 200ms ease,
+      box-shadow 220ms ease,
+      background-color 200ms ease;
+  }
+
+  input:hover:not(:disabled),
+  select:hover:not(:disabled),
+  textarea:hover:not(:disabled) {
+    border-color: color-mix(in oklab, var(--primary) 45%, var(--border));
+  }
+
+  /* Table polish */
+  tbody tr {
+    transition:
+      background-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  tbody tr:hover {
+    background-color: color-mix(in oklab, var(--primary) 6%, transparent);
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--primary) 28%, transparent);
+  }
+
+  /* Refined scrollbars */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklab, var(--primary) 40%, transparent) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: color-mix(in oklab, var(--primary) 35%, transparent);
+    border: 2px solid transparent;
+    background-clip: content-box;
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in oklab, var(--primary) 55%, transparent);
+  }
+}
+
+@utility panel {
+  position: relative;
+  background-color: color-mix(in oklab, var(--color-card) 88%, transparent);
+  background-image: var(--gradient-card);
+  backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid color-mix(in oklab, var(--color-border) 85%, transparent);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-panel);
+  transition:
+    box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 320ms ease;
+
+  &:hover {
+    box-shadow: var(--shadow-panel-hover);
+    border-color: color-mix(in oklab, var(--primary) 28%, var(--color-border));
+  }
+}
+
+/* Plain class (outside @layer/@utility) so it always wins over `panel`
+   when both are applied to the same element. */
+.hero-surface {
+  position: relative;
+  background-color: oklch(0.34 0.13 262);
+  background-image:
+    radial-gradient(120% 80% at 15% 0%, rgb(255 255 255 / 0.18), transparent 60%),
+    var(--gradient-hero);
+  background-size:
+    100% 100%,
+    160% 160%;
+  color: oklch(0.99 0.005 250);
+  animation: hero-drift 18s ease-in-out infinite alternate;
+  overflow: hidden;
+}
+
+.hero-surface .text-muted-foreground,
+.hero-surface p {
+  color: rgb(255 255 255 / 0.85);
+}
+
+@keyframes hero-drift {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+
